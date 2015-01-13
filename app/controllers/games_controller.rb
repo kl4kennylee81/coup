@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
 	def create 
-		@game = Game.new(state:1)
+		init_player_list = JSON.generate [current_player]
+		@game = Game.new(state:1,player_list:init_player_list)
 		@game.save
 		current_player.update_attributes(:available => false)
 		redirect_to @game
