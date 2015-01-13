@@ -1,0 +1,18 @@
+<p>
+	<%= 'Game '+ String(@game.id) %>
+</p>
+
+<h3>Players In Game</h3>
+<table>
+  <tr>
+    <th></th>
+  </tr>
+ 
+  <% @players.find_each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to 'Back', lobby_index_path %></p>

@@ -1,0 +1,39 @@
+<h1>Game Lobby </h1>
+
+<%= 'User: '+current_player.email %>
+
+<h2>Game List </h2>
+
+<%= link_to 'create game', games_path, :method => :post%>
+
+<table>
+  <tr>
+    <th>Games</th>
+  </tr>
+ 
+  <% Game.find_each do |game| %>
+    <tr>
+      <td><%= link_to "Game "+String(game.id),game_path(game) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h3>Players List </h3>
+<table>
+  <tr>
+    <th>Email</th>
+    <th>Status</th>
+    <th>Idle for </th>
+  </tr>
+ 
+  <% @players.find_each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= if (user.available==true) then 'Available'else 'In game' end %></td>
+      <td><%= String(((Time.now - user.last_seen)/60).ceil)+" min" %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+<%= link_to 'sign out', destroy_player_session_path, :method => :delete%>

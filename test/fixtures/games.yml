@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cards: MyString
+  player_list: MyString
+  state: 1
+
+two:
+  cards: MyString
+  player_list: MyString
+  state: 1
