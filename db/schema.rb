@@ -21,20 +21,20 @@ ActiveRecord::Schema.define(version: 20150112231346) do
     t.string   "player_list"
     t.integer  "state"
     t.integer  "current_turn"
-    t.boolean  "assas",                 default: false
-    t.boolean  "duke",                  default: false
-    t.boolean  "ambs",                  default: false
-    t.boolean  "cap",                   default: false
-    t.boolean  "fa",                    default: false
-    t.boolean  "inc",                   default: false
-    t.boolean  "coup",                  default: false 
-    t.boolean  "target",                default: false
-    t.string   "bs",                    default: ""
-    t.string   "coin_list"              default: ""
-    t.boolean  "counter",               default: false
-    t.boolean  "contessa",              default: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.boolean  "assas",        default: false
+    t.boolean  "duke",         default: false
+    t.boolean  "ambs",         default: false
+    t.boolean  "cap",          default: false
+    t.boolean  "fa",           default: false
+    t.boolean  "inc",          default: false
+    t.boolean  "coup",         default: false
+    t.boolean  "target",       default: false
+    t.string   "bs",           default: ""
+    t.string   "coin_list",    default: ""
+    t.boolean  "counter",      default: false
+    t.boolean  "contessa",     default: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "players", force: :cascade do |t|
