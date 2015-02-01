@@ -1,0 +1,30 @@
+<%= form_tag game_path(@game.id), :method => 'put' do %>
+  <table>
+    <tr>
+      <th>moves</th>
+      <th colspan ="1"></th>
+    </tr>
+    <% if (@can_call) %>
+      <tr>
+        <td><%= radio_button_tag(:bs, "called") %></td>
+        <td><%= label_tag(:move_detail, "call bluff on " + @last_turn) %></td>
+      </tr>
+    <% end %>
+    <% if (@can_counter)&&(@iscapt) %>
+      <tr>
+        <td><%= radio_button_tag(:block, "captain") %></td>
+        <td><%= label_tag(:move_detail, "block " + @last_turn + " with captain") %></td>
+      </tr>
+      <tr>
+        <td><%= radio_button_tag(:block, "ambs") %></td>
+        <td><%= label_tag(:move_detail, "block "+ @last_turn + " with ambassador") %></td>
+      </tr>
+    <% elsif (@can_counter) %>
+      <tr>
+        <td><%= radio_button_tag(:block, "block") %></td>
+        <td><%= label_tag(:move_detail, "block his move " + @last_turn) %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= submit_tag "make move", {:name => nil} %>
+<% end %>

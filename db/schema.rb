@@ -20,8 +20,9 @@ ActiveRecord::Schema.define(version: 20150112231346) do
     t.string   "cards"
     t.string   "player_list"
     t.integer  "state"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "current_turn"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "players", force: :cascade do |t|

@@ -4,6 +4,7 @@ class CreateGames < ActiveRecord::Migration
       t.string :cards
       t.string :player_list
       t.integer :state
+      t.integer :current_turn
 
       t.timestamps null: false
     end

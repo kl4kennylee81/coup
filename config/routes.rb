@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :games
 
+  #get '/games/:id', to: 'games#make', as: 'patient'
+
   get 'lobby/index'
 
   root to: 'lobby#index'
