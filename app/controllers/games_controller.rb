@@ -239,6 +239,7 @@ class GamesController < ApplicationController
 		coins.each do |i|
 			value = Integer(i)
 			if (target_index == count)
+				count = count + 1
 				if isadd
 					value = value + num
 					upd_list.push(value)
@@ -247,6 +248,7 @@ class GamesController < ApplicationController
 					upd_list.push(value)
 				end
 			else
+				count = count + 1
 				upd_list.push(value)
 			end
 		end
