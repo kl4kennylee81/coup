@@ -480,7 +480,7 @@ class GamesController < ApplicationController
 		elsif (g.contessa||g.cap||g.ambs||g.duke)&&(state == 4)
 			return JSON.dump([g.target])
 		else
-			return JSON.dump(upd_li)
+			return JSON.dump(li)
 		end
 	end
 

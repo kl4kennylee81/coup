@@ -4,7 +4,7 @@
       <th>moves</th>
       <th colspan ="1"></th>
     </tr>
-    <% if (@can_call) %>
+    <% if (@can_call)&&(not @is_turn) %>
       <tr>
         <td><%= radio_button_tag(:block, "called") %></td>
         <td><%= label_tag(:move_detail, "call bluff on " + @last_turn) %></td>
