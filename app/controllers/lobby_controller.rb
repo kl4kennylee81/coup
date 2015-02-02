@@ -2,7 +2,7 @@ require 'date'
 
 class LobbyController < ApplicationController
   before_filter :not_signed_in
-  before_filter :upd_inactive_games
+  #before_filter :upd_inactive_games
 
   ##@@count = 0
 
@@ -33,7 +33,7 @@ class LobbyController < ApplicationController
         upd_p_list = JSON.parse(g.player_list)
         p_list.each do |p|
           play = Player.where(['email = ?', p])
-          if (play[0].last_seen < Time.now-5)
+          if (play[0].last_seen < Time.now-50)
             play[0].update_attributes(:game_id => nil)
             upd_p_list.delete(p) 
             g.update_attributes(:player_list => JSON.dump(upd_p_list))
