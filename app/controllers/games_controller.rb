@@ -474,7 +474,8 @@ class GamesController < ApplicationController
 		elsif (g.contessa||g.cap||g.ambs||g.duke)&&(state == 4)
 			return JSON.dump([g.target])
 		else
-			return JSON.dump(li)
+			upd_li = li.delete(current_player)
+			return JSON.dump(upd_li)
 		end
 	end
 
@@ -524,7 +525,7 @@ class GamesController < ApplicationController
 
 	def next_turn(li,n)
 		next_turn = n+1
-		if (next_turn >= li.length)
+		if (next_turn > li.length)
 			return 1
 		else 
 			return next_turn
