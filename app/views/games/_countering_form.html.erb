@@ -6,11 +6,11 @@
     </tr>
     <% if (@can_call) %>
       <tr>
-        <td><%= radio_button_tag(:bs, "called") %></td>
+        <td><%= radio_button_tag(:block, "called") %></td>
         <td><%= label_tag(:move_detail, "call bluff on " + @last_turn) %></td>
       </tr>
     <% end %>
-    <% if (@can_counter)&&(@iscapt) %>
+    <% if (@can_counter)&&(@game.cap) %>
       <tr>
         <td><%= radio_button_tag(:block, "captain") %></td>
         <td><%= label_tag(:move_detail, "block " + @last_turn + " with captain") %></td>
@@ -23,8 +23,12 @@
       <tr>
         <td><%= radio_button_tag(:block, "block") %></td>
         <td><%= label_tag(:move_detail, "block his move " + @last_turn) %></td>
-      </tr>
+      </tr>    
     <% end %>
+    <tr> 
+      <td><%= radio_button_tag(:block, "nothing") %></td>
+      <td><%= label_tag(:move_detail, "do nothing against " + @last_turn) %></td>
+     </tr>
   </table>
   <%= submit_tag "make move", {:name => nil} %>
 <% end %>

@@ -2,51 +2,14 @@
 	<%= 'Game '+ String(@game.id) %>
 </p>
 
-<h3>Players In Game</h3>
-<table>
-  <tr>
-    <th></th>
-  </tr>
- 
-  <% @players.find_each do |user| %>
-    <tr>
-      <td><%= user.email %></td>
-    </tr>
-  <% end %>
-</table>
-
-<h3>player list</h3>
- 
-<% @cur_plist.each do |p| %>
-  <%= p %>
-<% end %>
-
-<p>
-<li> Players/Cards </li>
-<% @players.each do |p| %>
-  <%= p.email %>
-  <%= "has cards " + p.my_card %>
-<% end %>
-</p>
-
-<% if @game.state < 2 %>
-  <%= button_to 'update', game_path, method: 'patch' %>
-<% end %>
-
-<% if @game.state == 2 && @is_turn == true %>
-  <li><%= "the last move was "+ @last_turn %></li>
-  <%= render 'possible_moves' %>
-<% end %>
-
-<% if @game.state >= 3 %>
-  <li><%= "the last move was "+ @last_turn %></li>
-  <li><%= @bull %></li>
-  <li><%= "the target is " %></li>
-  <li><%= @game.current_turn %></li>
-  <%= render 'countering_form' %>
-
-<% end %>
-
 <%= @game.state %>
+<% if @game.state < 6 %>
+  <h3>Players In Game</h3>
+  <%= render 'player_table' %>
+
+  <%= render 'pre_winner' %>
+<% else %>
+  <li><%= "The winner is " + @winner %></li>
+<% end %>
 
 <p><%= link_to 'Back', lobby_index_path %></p>

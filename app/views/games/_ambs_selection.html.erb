@@ -1,0 +1,17 @@
+<%= form_tag game_path(@game.id), :method => 'put' do %>
+  <table>
+    <tr>
+      <th>moves</th>
+      <th colspan ="1"></th>
+    </tr>
+    <% if (@game.ambs)&&(@is_turn) %>
+      <% @cards_drawn.each do |c| %>
+      <tr>
+        <td><%= radio_button_tag(:chosen, c) %></td>
+        <td><%= label_tag(:move_detail, "chose hand " + c) %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </table>
+  <%= submit_tag "make move", {:name => nil} %>
+<% end %>

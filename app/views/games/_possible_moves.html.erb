@@ -4,34 +4,12 @@
       <th>moves</th>
       <th colspan ="1"></th>
     </tr>
+    <% @poss_moves.each do |moves| %>
     <tr>
-      <td><%= radio_button_tag(:move, "income") %></td>
-      <td><%= label_tag(:move_detail, "income") %></td>
+      <td><%= radio_button_tag(:move, moves) %></td>
+      <td><%= label_tag(:move_detail, moves) %></td>
     </tr>
-    <tr>
-      <td><%= radio_button_tag(:move, "fa") %></td>
-      <td><%= label_tag(:move_detail, "foreign aid") %></td>
-    </tr>
-    <tr>
-      <td><%= radio_button_tag(:move, "coup") %></td>
-      <td><%= label_tag(:move_detail, "coup") %></td>
-    </tr>
-    <tr>
-      <td><%= radio_button_tag(:move, "duke") %></td>
-      <td><%= label_tag(:move_detail, "tax") %></td>
-    </tr>
-    <tr>
-      <td><%= radio_button_tag(:move, "ambassador") %></td>
-      <td><%= label_tag(:move_detail, "exchange") %></td>
-    </tr>
-    <tr>
-      <td><%= radio_button_tag(:move, "assassin") %></td>
-      <td><%= label_tag(:move_detail, "Assasinate") %></td>
-    </tr>
-    <tr>
-      <td><%= radio_button_tag(:move, "captain") %></td>
-      <td><%= label_tag(:move_detail, "steal") %></td>
-    </tr>
+    <% end %>
     <tr>
       <td>target</td>
       <td><%= text_field_tag(:target,"input email of target") %></td>

@@ -28,21 +28,23 @@ class LobbyController < ApplicationController
 
   def upd_inactive_games 
     Game.all.find_each do |g|
-      p_list = JSON.parse(g.player_list)
-      upd_p_list = JSON.parse(g.player_list)
-      p_list.each do |p|
-        play = Player.where(['email = ?', p])
-        if (play[0].last_seen < Time.now-5)
-          play[0].update_attributes(:game_id => nil)
-          upd_p_list.delete(p) 
-          g.update_attributes(:player_list => JSON.dump(upd_p_list))
-        else 
+      if (g.player_list.length != 0)
+        p_list = JSON.parse(g.player_list)
+        upd_p_list = JSON.parse(g.player_list)
+        p_list.each do |p|
+          play = Player.where(['email = ?', p])
+          if (play[0].last_seen < Time.now-5)
+            play[0].update_attributes(:game_id => nil)
+            upd_p_list.delete(p) 
+            g.update_attributes(:player_list => JSON.dump(upd_p_list))
+          end 
+        end
+        if upd_p_list.length <= 0
+          g.destroy
         end 
-      end
-      if upd_p_list.length <= 0
+      elsif (g.player_list.length == 0)
         g.destroy
-      else
-      end 
+      end
     end
   end
 

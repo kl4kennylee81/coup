@@ -1,0 +1,11 @@
+<table>
+  <tr>
+    <th></th>
+  </tr>
+ 
+  <% @players.find_each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,36 @@
+<p>
+<li> Players/Cards </li>
+<% @players.each do |p| %>
+  <%= p.email %>
+  <%= "has cards " + p.my_card %>
+<% end %>
+</p>
+
+<% if @game.state < 2 %>
+  <%= button_to 'update', game_path, method: 'patch' %>
+<% end %>
+
+<% if @game.state >= 3 %>
+  <li><%= "the last move was "+ @last_turn %></li>
+  <li><%= @bull %></li>
+  <li><%= "the target is " %></li>
+  <li><%= @game.current_turn %></li>
+  <li><%= "cards in deck " + @game.cards %></li>
+  <li><%= @game.coin_list %></li>
+<% end %>
+
+
+<% if @game.state == 2 && @is_turn == true %>
+  <li><%= "the last move was "+ @last_turn %></li>
+  <li><%= "cards in deck " + @game.cards %></li>
+  <li><%= @game.coin_list %></li>
+  <%= render 'possible_moves' %>
+<% end %>
+
+<% if (@game.state == 3)||(@game.state == 4) %>
+  <%= render 'countering_form' %>
+<% end %>
+
+<% if (@game.state == 5) %>
+  <%= render 'ambs_selection' %>
+<% end %>
