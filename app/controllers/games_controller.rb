@@ -533,7 +533,7 @@ class GamesController < ApplicationController
 
 	def your_turn(li,n)
 		name = li[n-1]
-		if name = current_player.email
+		if name == current_player.email
 			return true
 		else
 			return false
