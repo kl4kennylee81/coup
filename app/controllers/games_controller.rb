@@ -12,11 +12,13 @@ class GamesController < ApplicationController
 
 	def show
 		@game = Game.find(params[:id])
-		if (@game.state < 6)
+		if (@game.state == 1)
 			@cur_plist = JSON.parse (@game.player_list)
 			@added_player = player_join(@cur_plist,current_player.email)
 			@game.update_attributes(player_list:JSON.dump(@added_player))
 			current_player.update_attributes(:game_id => @game.id)
+		if (@game.state < 6)
+			@cur_plist = JSON.parse (@game.player_list)
 	  		@players = Player.where(['game_id = ?', @game.id])
 	  		if (@game.state >= 2)&&(@cur_plist.find_index(current_player.email)!= nil)
 	  			@is_turn = your_turn(@cur_plist,@game.current_turn)
