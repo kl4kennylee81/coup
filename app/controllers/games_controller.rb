@@ -480,7 +480,6 @@ class GamesController < ApplicationController
 		elsif (g.contessa||g.cap||g.ambs||g.duke)&&(state == 4)
 			return JSON.dump([g.target])
 		else
-			upd_li = li.delete(current_player)
 			return JSON.dump(upd_li)
 		end
 	end
