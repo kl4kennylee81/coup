@@ -459,12 +459,16 @@ class GamesController < ApplicationController
 	end
 
 	def can_call_bs(name,g)
-		list = JSON.parse(g.bs)
-		finding = list.find_index(current_player.email)
-		if (finding == nil)
+		begin
+			list = JSON.parse(g.bs)
+			finding = list.find_index(current_player.email)
+			if (finding == nil)
+				return false
+			else
+				return true
+			end
+		rescue StandardError
 			return false
-		else
-			true
 		end
 	end
 

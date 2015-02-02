@@ -3,8 +3,8 @@ IDLE_TIME = 5*60
 
 GAME_IDLE_TIME = 60
 
-#CARDS = "dddaaacccxxxlll"
-CARDS = "xxxxxxxxxxxxxxxx"
+CARDS = "dddaaacccxxxlll"
+#CARDS = "xxxxxxxxxxxxxxxx"
 
 INC_COST = 0
 FA_COST = 0
