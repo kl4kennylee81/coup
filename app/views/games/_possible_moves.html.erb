@@ -12,7 +12,7 @@
     <% end %>
     <tr>
       <td>target</td>
-      <td><%= text_field_tag(:target,"input email of target") %></td>
+      <td><%= select_tag(:target,options_for_select(@can_target)) %></td>
     </tr>
   </table>
   <%= submit_tag "make move", {:name => nil} %>

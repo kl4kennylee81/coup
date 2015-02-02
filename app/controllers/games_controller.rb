@@ -21,6 +21,8 @@ class GamesController < ApplicationController
 		elsif (@game.state < 6)
 			@cur_plist = JSON.parse (@game.player_list)
 	  		@players = Player.where(['game_id = ?', @game.id])
+	  		@can_target = JSON.parse (@game.player_list)
+	  		@can_target.delete(current_player.email)
 	  		if (@game.state >= 2)&&(@cur_plist.find_index(current_player.email)!= nil)
 	  			@is_turn = your_turn(@cur_plist,@game.current_turn)
 	  			@current_turn = @cur_plist[@game.current_turn-1]
