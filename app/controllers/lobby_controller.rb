@@ -2,7 +2,7 @@ require 'date'
 
 class LobbyController < ApplicationController
   before_filter :not_signed_in
-  before_filter :upd_inactive_games
+  #before_filter :upd_inactive_games
 
   ##@@count = 0
 
