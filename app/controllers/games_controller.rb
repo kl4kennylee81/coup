@@ -370,6 +370,12 @@ class GamesController < ApplicationController
 		end
 	end
 
+	def make_hand (p,deck)
+		play = Player.where(['email = ?', p])[0]
+		cards = deck.pop()
+		cards = cards + deck.pop()
+		play.update_attributes(:my_card => cards)
+	end
 	def init_game(g)
 		cur_plist = JSON.parse (@game.player_list)
 		clear_moves(g)
@@ -378,12 +384,7 @@ class GamesController < ApplicationController
 		deck_list = shuffled.scan(/./)
 		coin_list = Array.new(cur_plist.length,2)
 		g.update_attributes(:coin_list => JSON.dump(coin_list))
-		cur_plist.each do |p|
-			play = Player.where(['email = ?', p])
-			cards = deck_list.pop()
-			cards = cards + deck_list.pop()
-			play[0].update_attributes(:my_card => cards)
-		end 
+		cur_plist.map { |p| make_hand(p,deck_list) }
 		g.update_attributes(:cards => list_to_string(deck_list))
 		cur_plist.shuffle!
 		upd_list = JSON.dump(cur_plist)
