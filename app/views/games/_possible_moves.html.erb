@@ -12,7 +12,7 @@
     <% end %>
     <tr>
       <td>target</td>
-      <td><%= select_tag(:target,options_for_select(@can_target)) %></td>
+      <td><%= select_tag(:target,options_for_select(@cur_plist)) %></td>
     </tr>
   </table>
   <%= submit_tag "make move", {:name => nil} %>

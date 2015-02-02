@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20150112231346) do
     t.string   "cards"
     t.string   "player_list"
     t.integer  "state"
-    t.integer  "current_turn"
+    t.integer  "current_turn", default: 1
     t.boolean  "assas",        default: false
     t.boolean  "duke",         default: false
     t.boolean  "ambs",         default: false

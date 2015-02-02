@@ -21,8 +21,6 @@ class GamesController < ApplicationController
 		elsif (@game.state < 6)
 			@cur_plist = JSON.parse (@game.player_list)
 	  		@players = Player.where(['game_id = ?', @game.id])
-	  		@can_target = Player.where(['game_id = ?', @game.id])
-	  		@can_target.delete(current_player)
 	  		if (@game.state >= 2)&&(@cur_plist.find_index(current_player.email)!= nil)
 	  			@is_turn = your_turn(@cur_plist,@game.current_turn)
 	  			@current_turn = @cur_plist[@game.current_turn-1]
@@ -45,7 +43,7 @@ class GamesController < ApplicationController
 
 	def possible_moves(g)
 		p_list = JSON.parse(g.player_list)
-		index = p_list.find_index(current_turn_player(@game).email)
+		index = p_list.find_index(current_player.email)
 		coins = JSON.parse(g.coin_list)[index]
 		temp_list = []
 		count = 0
@@ -205,7 +203,7 @@ class GamesController < ApplicationController
 
 	def ambs_draw (g)
 		upd_string = g.cards
- 		p = current_turn_player(@game)
+ 		p = current_turn_player(g)
 		cards = upd_string.slice!(0,p.my_card.length)
 		g.update_attributes(:cards => upd_string)
 		g.update_attributes(:drawn => cards)
