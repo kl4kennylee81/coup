@@ -3,9 +3,9 @@
     <th></th>
   </tr>
  
-  <% @players.find_each do |user| %>
+  <% @cur_plist.each do |user| %>
     <tr>
-      <td><%= user.email %></td>
+      <td><%= user %></td>
     </tr>
   <% end %>
 </table>
