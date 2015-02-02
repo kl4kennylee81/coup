@@ -547,9 +547,8 @@ class GamesController < ApplicationController
 			return false
 		else
 			li.each do |i|
-				if (i = x)
+				if (i == x)
 					return true
-				else
 				end
 			end
 			return false
