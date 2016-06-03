@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
 
-	# test
+	# test 2
 	def create 
 		# hack to coerce JSON.dump to create an array with one object
 		temp_list = Array.new(0)
